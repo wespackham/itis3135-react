@@ -1,0 +1,17 @@
+function Footer() {
+    return (
+    <footer>
+        <nav>
+            <a href="https://webpages.charlotte.edu/wpackham/">CLT Web</a>
+            <a href="https://github.com/wespackham">GitHub</a>
+            <a href="https://wespackham.github.io/">GitHub.io</a>
+            <a href="https://www.freecodecamp.org/wpackham">freeCodeCamp</a>
+            <a href="https://www.codecademy.com/profiles/wespackham">Codecademy</a>
+            <a href="https://www.linkedin.com/in/wespackham/">LinkedIn</a>
+        </nav>
+        <p>Page designed by <a href="wpcreative.cc">WP Creative</a></p>
+    </footer>
+    )
+}
+
+export default Footer;
