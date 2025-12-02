@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Introduction from './pages/Introduction'
 import Contract from './pages/Contract'
+import Jsonintro from './pages/Jsonintro'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Introduction" element={<Introduction />} />
                 <Route path="/Contract" element={<Contract />} />
+                <Route path="/jsonintro" element={<Jsonintro />} />
             </Routes>
             <Footer />
         </BrowserRouter>
