@@ -6,13 +6,22 @@ function Jsonintro() {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        import('../assets/intros.json')
-            .then(module => {
-                setIntrosData(module.default)
+        const baseUrl = import.meta.env.BASE_URL || '/'
+        const jsonPath = `${baseUrl}intros.json`.replace(/\/+/g, '/')
+
+        fetch(jsonPath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+                }
+                return response.json()
+            })
+            .then(data => {
+                setIntrosData(data)
                 setLoading(false)
             })
             .catch(err => {
-                console.error('Import error:', err)
+                console.error('Fetch error:', err)
                 setError(`Failed to load data: ${err.message}`)
                 setLoading(false)
             })
