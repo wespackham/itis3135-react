@@ -1,6 +1,46 @@
-import introsData from '../assets/intros.json'
+import { useState, useEffect } from 'react'
 
 function Jsonintro() {
+    const [introsData, setIntrosData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        fetch('/intros.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load data')
+                }
+                return response.json()
+            })
+            .then(data => {
+                setIntrosData(data)
+                setLoading(false)
+            })
+            .catch(err => {
+                setError(err.message)
+                setLoading(false)
+            })
+    }, [])
+
+    if (loading) {
+        return (
+            <main>
+                <h2>Student Introductions</h2>
+                <p>Loading...</p>
+            </main>
+        )
+    }
+
+    if (error) {
+        return (
+            <main>
+                <h2>Student Introductions</h2>
+                <p>Error loading data: {error}</p>
+            </main>
+        )
+    }
+
     return (
         <main>
             <h2>Student Introductions</h2>
